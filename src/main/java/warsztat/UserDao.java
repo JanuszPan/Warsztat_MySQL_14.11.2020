@@ -81,7 +81,6 @@ public class UserDao {
             e.printStackTrace();
         }
     }
-
     //        metoda służąca do pobrania wszystkich obiektów klasy User
     public User[] findAll() {
         try (Connection conn = DbUtil.connect()) {
@@ -95,27 +94,8 @@ public class UserDao {
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
 //                trzeba umieścić obiekty w tablicy users
-
-                User[] stockArr = Arrays.copyOf(users, users.length + 1);
-                stockArr[users.length] = user;
-                users =stockArr;
-//                System.out.println(Arrays.toString(users));
-//                https://stackoverflow.com/questions/5374311/convert-arrayliststring-to-string-array
-//                List<String> stockList = new ArrayList<>();
-//                stockList.add("id");
-//                stockList.add("username");
-//                stockList.add("email");
-//                stockList.add("password");
-////                stockList.toArray();
-//// size() returns the number of elements in this list.
-//                String[] stockArr = new String[stockList.size()];
-//                stockArr = stockList.toArray(stockArr);
-//
-//                for (String s : stockArr) {
-//
-//                }
-//                System.out.println(Arrays.toString(stockArr));
-
+                users = Arrays.copyOf(users, users.length + 1);
+                users[users.length - 1] = user;
             }
             return users;
         } catch (SQLException e) {

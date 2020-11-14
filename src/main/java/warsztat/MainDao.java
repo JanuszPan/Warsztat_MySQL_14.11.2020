@@ -13,17 +13,17 @@ public class MainDao {
 //        user.setPassword("qazwsxSylwia");
 //        userDao.create(user);
 //        sprawdzenie czy hasło wpisane przez użytkownika jest tym, które zostało zapisane w bazie.
-        if(BCrypt.checkpw("qazwsxEliza","$2a$10$PGWHIAEhIvlYiMWjUIwXN.Zbuz52OtP6BGGmK9mJSkkhm6VP1GJJy")){
+        if(BCrypt.checkpw("qazwsxSylwia","$2a$10$ldiiNEYXEzN/OI1hm93ARuI37F47U8CEJ8h3bNAuuT/2uKwQfuueW")){
             System.out.println("OK");
         }else {
             System.out.println("Password does not match");
         }
 //
 ////     sprawdzenie metody public User read (int userId), ale nie wyświetla tablicy w postaci tekstowej !?
-//        User read =userDao.read(7);
-//        System.out.println(read);
-//        User readNotExist =userDao.read(4);
-//        System.out.println(readNotExist);
+        User read =userDao.read(7);
+        System.out.println(read);
+        User readNotExist =userDao.read(4);
+        System.out.println(readNotExist);
 
 //        sprawdzenie metody public void update(User user)
 //        User userToUpdate =userDao.read(1);

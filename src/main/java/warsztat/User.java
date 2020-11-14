@@ -1,6 +1,8 @@
 package warsztat;
 
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class User {
     private int id;
     private String username;
@@ -30,7 +32,18 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-//// Hash a password for the first time
+//nadpisujemy metodę toString, żeby nie wyświetlały się hashkody
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+    //// Hash a password for the first time
 //String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
 //// gensalt's log_rounds parameter determines the complexity
 //// the work factor is 2**log_rounds, and the default is 10
@@ -46,6 +59,9 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password=password;
+//        można też zahaszować hasło tutaj
+//        this.password=BCrypt.hashpw(password, BCrypt.gensalt());
+
     }
 }
