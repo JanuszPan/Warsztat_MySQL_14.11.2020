@@ -100,7 +100,6 @@ public class UserDao {
                 stockArr[users.length] = user;
                 users =stockArr;
 //                System.out.println(Arrays.toString(users));
-
 //                https://stackoverflow.com/questions/5374311/convert-arrayliststring-to-string-array
 //                List<String> stockList = new ArrayList<>();
 //                stockList.add("id");

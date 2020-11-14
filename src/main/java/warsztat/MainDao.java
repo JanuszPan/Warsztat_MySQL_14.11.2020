@@ -8,9 +8,9 @@ public class MainDao {
         UserDao userDao = new UserDao();
         User user =new User();
 //        sprawdzenie metody public User create(User user) z klasy UserDao
-//        user.setUsername("Andrzej");
-//        user.setEmail("andrzej@wp.pl");
-//        user.setPassword("qazwsxAndrzej");
+//        user.setUsername("Sylwia");
+//        user.setEmail("sylwia@wp.pl");
+//        user.setPassword("qazwsxSylwia");
 //        userDao.create(user);
 //        sprawdzenie czy hasło wpisane przez użytkownika jest tym, które zostało zapisane w bazie.
         if(BCrypt.checkpw("qazwsxEliza","$2a$10$PGWHIAEhIvlYiMWjUIwXN.Zbuz52OtP6BGGmK9mJSkkhm6VP1GJJy")){
