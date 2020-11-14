@@ -18,12 +18,12 @@ public class MainDao {
         }else {
             System.out.println("Password does not match");
         }
-
-//     sprawdzenie metody public User read (int userId), ale nie wyświetla tablicy w postaci tekstowej !?
-        User read =userDao.read(7);
-        System.out.println(read);
-        User readNotExist =userDao.read(4);
-        System.out.println(readNotExist);
+//
+////     sprawdzenie metody public User read (int userId), ale nie wyświetla tablicy w postaci tekstowej !?
+//        User read =userDao.read(7);
+//        System.out.println(read);
+//        User readNotExist =userDao.read(4);
+//        System.out.println(readNotExist);
 
 //        sprawdzenie metody public void update(User user)
 //        User userToUpdate =userDao.read(1);
@@ -33,10 +33,10 @@ public class MainDao {
 //        userDao.update(userToUpdate);
 
 //        sprawdzenie metody public User[] findAll()
-//        User[] all=userDao.findAll();
-//        for (User u: all) {
-//            System.out.println(u);
-//        }
+        User[] all=userDao.findAll();
+        for (User u: all) {
+            System.out.println(u);
+        }
 
 //        sprawdzenie metody public void delete(int userId)
 //        userDao.delete(5);

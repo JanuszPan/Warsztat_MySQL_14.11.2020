@@ -6,9 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class UserDao {
 //    zapytania CRUD (create, read, update, delete) + findAll + deleteAll
@@ -97,21 +95,27 @@ public class UserDao {
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
 //                trzeba umieścić obiekty w tablicy users
+
+                User[] stockArr = Arrays.copyOf(users, users.length + 1);
+                stockArr[users.length] = user;
+                users =stockArr;
+//                System.out.println(Arrays.toString(users));
+
 //                https://stackoverflow.com/questions/5374311/convert-arrayliststring-to-string-array
-                List<String> stockList = new ArrayList<>();
-                stockList.add("id");
-                stockList.add("username");
-                stockList.add("email");
-                stockList.add("password");
-//                stockList.toArray();
-// size() returns the number of elements in this list.
-                String[] stockArr = new String[stockList.size()];
-                stockArr = stockList.toArray(stockArr);
-
-                for (String s : stockArr) {
-
-                }
-                System.out.println(Arrays.toString(stockArr));
+//                List<String> stockList = new ArrayList<>();
+//                stockList.add("id");
+//                stockList.add("username");
+//                stockList.add("email");
+//                stockList.add("password");
+////                stockList.toArray();
+//// size() returns the number of elements in this list.
+//                String[] stockArr = new String[stockList.size()];
+//                stockArr = stockList.toArray(stockArr);
+//
+//                for (String s : stockArr) {
+//
+//                }
+//                System.out.println(Arrays.toString(stockArr));
 
             }
             return users;
