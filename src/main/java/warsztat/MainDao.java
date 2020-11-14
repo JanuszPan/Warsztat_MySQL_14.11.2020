@@ -1,21 +1,29 @@
 package warsztat;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 //klasa służąca do przetestowania poprawności wywołania metod klasy UserDao
 public class MainDao {
     public static void main(String[] args) {
         UserDao userDao = new UserDao();
         User user =new User();
 //        sprawdzenie metody public User create(User user) z klasy UserDao
-//        user.setUsername("Marek");
-//        user.setEmail("marek@wp.pl");
-//        user.setPassword("qazwsx123");
+//        user.setUsername("Andrzej");
+//        user.setEmail("andrzej@wp.pl");
+//        user.setPassword("qazwsxAndrzej");
 //        userDao.create(user);
+//        sprawdzenie czy hasło wpisane przez użytkownika jest tym, które zostało zapisane w bazie.
+        if(BCrypt.checkpw("qazwsxEliza","$2a$10$PGWHIAEhIvlYiMWjUIwXN.Zbuz52OtP6BGGmK9mJSkkhm6VP1GJJy")){
+            System.out.println("OK");
+        }else {
+            System.out.println("Password does not match");
+        }
 
 //     sprawdzenie metody public User read (int userId), ale nie wyświetla tablicy w postaci tekstowej !?
-//        User read =userDao.read(1);
-//        System.out.println(read);
-//        User readNotExist =userDao.read(4);
-//        System.out.println(readNotExist);
+        User read =userDao.read(7);
+        System.out.println(read);
+        User readNotExist =userDao.read(4);
+        System.out.println(readNotExist);
 
 //        sprawdzenie metody public void update(User user)
 //        User userToUpdate =userDao.read(1);
@@ -25,13 +33,13 @@ public class MainDao {
 //        userDao.update(userToUpdate);
 
 //        sprawdzenie metody public User[] findAll()
-        User[] all=userDao.findAll();
-        for (User u: all) {
-            System.out.println(u);
-        }
+//        User[] all=userDao.findAll();
+//        for (User u: all) {
+//            System.out.println(u);
+//        }
 
 //        sprawdzenie metody public void delete(int userId)
-//        userDao.delete(2);
+//        userDao.delete(5);
     }
 
 }

@@ -1,9 +1,14 @@
 package warsztat;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class UserDao {
 //    zapytania CRUD (create, read, update, delete) + findAll + deleteAll
@@ -31,7 +36,7 @@ public class UserDao {
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getEmail());
 //trzeba zahaszować hasło http://www.mindrot.org/projects/jBCrypt/
-            statement.setString(3, user.getPassword());
+            statement.setString(3, BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
             statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -91,8 +96,23 @@ public class UserDao {
                 user.setUsername(resultSet.getString("username"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
-//                trzeba napisać metodę, która umieści obiekty w tablicy users
-//                users= addToArray(user, users);
+//                trzeba umieścić obiekty w tablicy users
+//                https://stackoverflow.com/questions/5374311/convert-arrayliststring-to-string-array
+                List<String> stockList = new ArrayList<>();
+                stockList.add("id");
+                stockList.add("username");
+                stockList.add("email");
+                stockList.add("password");
+//                stockList.toArray();
+// size() returns the number of elements in this list.
+                String[] stockArr = new String[stockList.size()];
+                stockArr = stockList.toArray(stockArr);
+
+                for (String s : stockArr) {
+
+                }
+                System.out.println(Arrays.toString(stockArr));
+
             }
             return users;
         } catch (SQLException e) {
@@ -105,7 +125,7 @@ public class UserDao {
     public void delete(int userId) {
         try (Connection conn = DbUtil.connect()) {
             PreparedStatement statement = conn.prepareStatement(DELETE_USER_QUERY);
-            statement.setInt(1,userId);
+            statement.setInt(1, userId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

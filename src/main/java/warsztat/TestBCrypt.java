@@ -91,6 +91,7 @@ import org.mindrot.jbcrypt.BCrypt;
          * @param args unused
          */
         public static void main(String[] args) {
+
             junit.textui.TestRunner.run(TestBCrypt.class);
         }
 
